@@ -200,7 +200,23 @@ public:
      * @author zhangfucheng
      * @date 2017.11.7
     **/
-    int parse(std::string line) const;
+    int parse(std::string line) const {
+        std::stringstream ss(line);
+        std::string sub_str;
+        unsigned int i = 0;
+        while (getline(ss, sub_str, '\t') && i < _v.size()) {
+            int cons = _v[i]->parse(sub_str);
+            if (cons < 0) {
+                return -1;
+            }
+            i++;
+        }
+        if (ss.eof() && (i == _v.size())) {
+            return 0;
+        }
+        return -1;
+    }
+
 private:
     //should not be shared_ptr, because the element it point to may in stack
     std::vector<ParserBase*> _v;
