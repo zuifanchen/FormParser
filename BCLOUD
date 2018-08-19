@@ -50,9 +50,9 @@ CONFIGS("thirdsrc/gtest@base")
 #OUTPUT('conf', '$OUT')
 
 #bin
-Application('goodcoder', Sources('main.cpp','parser.cpp'))
+Application('goodcoder', Sources('main.cpp'))
 
-Application('parser_test', Sources('parser_test.cpp','parser.cpp'))
+Application('parser_test', Sources('parser_test.cpp'))
 #UT
 #UTApplication('zhangfucheng', Sources(user_sources), UTArgs(''), UTOnServer(False))
 
